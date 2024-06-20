@@ -1,0 +1,22 @@
+Nt = min(int(10*L*np.sqrt(E2)/(2*np.pi)),300)
+    delta_t = 2*np.pi/Nt
+
+    # Introducir función analítica que describa el borde del dominio
+    # IMPORTANTE: QUE VAYA EN SENTIDO CONTRARIO A LAS AGUJAS DEL RELOJ!!!
+    t = np.linspace(0, 2*np.pi, Nt, endpoint=False)
+    r = 0.7*(1+np.cos(t))
+    rprima = -0.7*np.sin(t)
+    rsegunda = -0.7*np.cos(t)
+
+    x = r*np.cos(t) #########################################################
+    y = r*np.sin(t) #########################################################
+
+    xprima = rprima*np.cos(t) - r*np.sin(t) #########################################################
+    yprima = rprima*np.sin(t) + r*np.cos(t) #########################################################
+
+    xsegunda = rsegunda*np.cos(t) -2*rprima*np.sin(t) -r*np.cos(t) #########################################################
+    ysegunda = rsegunda*np.sin(t) +2*rprima*np.cos(t) -r*np.sin(t) #########################################################
+
+    # Arrays de puntos en el plano
+    ejex = np.linspace(-0.45, 1.65, Nt, endpoint=False) #########################################################
+    ejey = np.linspace(1.05, -1.05, Nt, endpoint=False) #########################################################

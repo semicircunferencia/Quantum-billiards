@@ -1,0 +1,41 @@
+Nt = min(int(10*L*np.sqrt(E2)/(2*np.pi)),300)
+
+    Ntchiq = int(0.25*Nt)
+    Nt = 4*Ntchiq # Para que sea divisible entre 4, estamos en un cuadrado dep
+
+    delta_t = 2*np.pi/Nt
+
+    # Introducir función analítica que describa el borde del dominio
+    # IMPORTANTE: QUE VAYA EN SENTIDO CONTRARIO A LAS AGUJAS DEL RELOJ!!!
+    t = np.linspace(0, 2*np.pi, Nt, endpoint=False)
+
+    x1 = np.linspace(1, -1, Ntchiq, endpoint=False)
+    y1 = np.full(Ntchiq, 1)
+    x2 = np.full(Ntchiq, -1)
+    y2 = np.linspace(1, -1, Ntchiq, endpoint=False)
+    x3 = np.linspace(-1, 1, Ntchiq, endpoint=False)
+    y3 = np.full(Ntchiq, -1)
+    x4 = np.full(Ntchiq, 1)
+    y4 = np.linspace(-1, 1, Ntchiq, endpoint=False)
+
+    x1prima = np.full(Ntchiq, -4/np.pi)
+    y1prima = np.zeros(Ntchiq)
+    x2prima = np.zeros(Ntchiq)
+    y2prima = np.full(Ntchiq, -4/np.pi)
+    x3prima = np.full(Ntchiq, 4/np.pi)
+    y3prima = np.zeros(Ntchiq)
+    x4prima = np.zeros(Ntchiq)
+    y4prima = np.full(Ntchiq, 4/np.pi)
+
+    x = np.concatenate([x1,x2,x3,x4]) #########################################################
+    y = np.concatenate([y1,y2,y3,y4]) #########################################################
+
+    xprima = np.concatenate([x1prima,x2prima,x3prima,x4prima]) #########################################################
+    yprima = np.concatenate([y1prima,y2prima,y3prima,y4prima]) #########################################################
+
+    xsegunda = np.zeros(Nt) #########################################################
+    ysegunda = np.zeros(Nt)  #########################################################
+
+    # Arrays de puntos en el plano
+    ejex = np.linspace(-1.2, 1.2, Nt, endpoint=False) #########################################################
+    ejey = np.linspace(1.2, -1.2, Nt, endpoint=False) #########################################################
